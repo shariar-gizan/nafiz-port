@@ -58,6 +58,22 @@ export default function Skills() {
     },
   ];
 
+  // Explored skills - technologies I've worked with
+  const exploredSkills = [
+    { name: "SwiftUI", category: "iOS" },
+    { name: "GraphQL", category: "API" },
+    { name: "MongoDB", category: "Database" },
+    { name: "SQLite", category: "Database" },
+    { name: "Room", category: "Android" },
+    { name: "Retrofit", category: "Android" },
+    { name: "Redux", category: "State Management" },
+    { name: "Provider", category: "Flutter" },
+    { name: "Bloc", category: "Flutter" },
+    { name: "GetX", category: "Flutter" },
+    { name: "Material Design", category: "UI" },
+    { name: "Docker", category: "DevOps" },
+  ];
+
   return (
     <section id="skills" className="relative section-padding">
       {/* Background elements */}
@@ -112,6 +128,29 @@ export default function Skills() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Explored Skills Section */}
+        <div className={cn(
+          "mt-16 glass-card p-8 transition-all duration-700 delay-500",
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        )}>
+          <h3 className="text-2xl font-semibold mb-6 text-center">
+            Explored <span className="text-gradient">Technologies</span>
+          </h3>
+          <div className="flex flex-wrap gap-3 justify-center">
+            {exploredSkills.map((skill) => (
+              <div 
+                key={skill.name}
+                className="px-4 py-2 bg-background/30 rounded-full text-sm flex items-center gap-2"
+              >
+                <span className="font-medium">{skill.name}</span>
+                <span className="text-xs px-2 py-0.5 bg-theme-purple/20 rounded-full text-theme-purple">
+                  {skill.category}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

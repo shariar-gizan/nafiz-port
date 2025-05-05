@@ -45,28 +45,30 @@ export default function About() {
         </h2>
         
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-          {/* Profile Photo - Made larger and square */}
+          {/* Profile Photo - Made rectangular */}
           <div className={cn(
             "w-full md:w-1/3 flex justify-center transition-all duration-700",
             isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
           )}>
             <div className="relative group">
               {/* Main photo */}
-              <Avatar className="w-64 h-64 border-4 border-theme-purple/30">
-                <AvatarImage src="/profile-photo.jpg" alt="Shariar Nafiz" />
-                <AvatarFallback className="text-4xl bg-theme-purple/20">SN</AvatarFallback>
-              </Avatar>
+              <div className="w-72 h-96 overflow-hidden rounded-md border-4 border-theme-purple/30">
+                <img 
+                  src="/profile-photo.jpg" 
+                  alt="Shariar Nafiz" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
               
               {/* White version on hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Avatar className="w-64 h-64 border-4 border-theme-blue/30">
-                  <AvatarImage 
+                <div className="w-72 h-96 overflow-hidden rounded-md border-4 border-theme-blue/30">
+                  <img 
                     src="/profile-photo.jpg" 
                     alt="Shariar Nafiz" 
-                    className="filter brightness-200 contrast-50 saturate-0" 
+                    className="w-full h-full object-cover filter brightness-200 contrast-50 saturate-0"
                   />
-                  <AvatarFallback className="text-4xl bg-white/20 text-white">SN</AvatarFallback>
-                </Avatar>
+                </div>
               </div>
             </div>
           </div>

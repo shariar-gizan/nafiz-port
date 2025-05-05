@@ -4,18 +4,22 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
     // Check if theme was previously saved in localStorage or use system preference
     const savedTheme = localStorage.getItem("theme") || 
       (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     
-    // Set initial theme state and apply it to document
-    setTheme(savedTheme);
+    // Set initial theme state
+    setTheme(savedTheme as "light" | "dark");
     
     // Apply theme to document
-    document.documentElement.classList.toggle("dark", savedTheme === "dark");
+    if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }, []);
 
   const toggleTheme = () => {
@@ -25,8 +29,12 @@ export default function ThemeToggle() {
     // Store theme preference in localStorage
     localStorage.setItem("theme", newTheme);
     
-    // Apply theme to document
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    // Apply theme to document - properly toggle classes
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   };
 
   return (

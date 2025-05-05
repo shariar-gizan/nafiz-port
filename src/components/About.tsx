@@ -45,15 +45,30 @@ export default function About() {
         </h2>
         
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-          {/* Profile Photo */}
+          {/* Profile Photo - Made larger and square */}
           <div className={cn(
             "w-full md:w-1/3 flex justify-center transition-all duration-700",
             isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
           )}>
-            <Avatar className="w-48 h-48 border-4 border-theme-purple/30">
-              <AvatarImage src="/profile-photo.jpg" alt="Shariar Nafiz" />
-              <AvatarFallback className="text-4xl bg-theme-purple/20">SN</AvatarFallback>
-            </Avatar>
+            <div className="relative group">
+              {/* Main photo */}
+              <Avatar className="w-64 h-64 border-4 border-theme-purple/30">
+                <AvatarImage src="/profile-photo.jpg" alt="Shariar Nafiz" />
+                <AvatarFallback className="text-4xl bg-theme-purple/20">SN</AvatarFallback>
+              </Avatar>
+              
+              {/* White version on hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <Avatar className="w-64 h-64 border-4 border-theme-blue/30">
+                  <AvatarImage 
+                    src="/profile-photo.jpg" 
+                    alt="Shariar Nafiz" 
+                    className="filter brightness-200 contrast-50 saturate-0" 
+                  />
+                  <AvatarFallback className="text-4xl bg-white/20 text-white">SN</AvatarFallback>
+                </Avatar>
+              </div>
+            </div>
           </div>
 
           {/* About Text */}
@@ -74,27 +89,6 @@ export default function About() {
               <p>
                 My goal is to continue growing as a developer while creating applications that make a positive impact on users' lives.
               </p>
-            </div>
-
-            {/* Education Section - Now placed below about text */}
-            <div className={cn(
-              "mt-8 glass-card p-6 transition-all duration-700 delay-300",
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
-            )}>
-              <h3 className="text-xl font-semibold mb-4">Education</h3>
-              <div className="space-y-6">
-                <div className="border-l-2 border-theme-blue pl-4 py-1">
-                  <p className="text-sm text-theme-blue">2024 - Present</p>
-                  <h4 className="font-medium">BSc in Computer Science and Engineering</h4>
-                  <p className="text-sm text-muted-foreground">Southeast University</p>
-                </div>
-                
-                <div className="border-l-2 border-theme-purple pl-4 py-1">
-                  <p className="text-sm text-theme-purple">2019 - 2023</p>
-                  <h4 className="font-medium">Diploma in Computer Engineering</h4>
-                  <p className="text-sm text-muted-foreground">Cumilla Polytechnic Institute</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>

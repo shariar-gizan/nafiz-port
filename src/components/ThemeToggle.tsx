@@ -15,11 +15,7 @@ export default function ThemeToggle() {
     setTheme(savedTheme);
     
     // Apply theme to document
-    if (savedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    document.documentElement.classList.toggle("dark", savedTheme === "dark");
   }, []);
 
   const toggleTheme = () => {
@@ -30,11 +26,7 @@ export default function ThemeToggle() {
     localStorage.setItem("theme", newTheme);
     
     // Apply theme to document
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
 
   return (
